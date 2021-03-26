@@ -41,6 +41,9 @@
 // Add RESET
 // Add tests, examples.
 
+#[macro_use]
+extern crate lazy_static;
+
 pub mod dot {
     #[derive(Copy, Clone)]
     pub enum DotColors {
@@ -97,6 +100,63 @@ pub mod dot {
         Blink     ,
         Reverse   ,
         Hidden
+    }
+
+    macro_rules! makedot {
+        ($type:expr, $color:expr) => {
+            format!("\x1b[{};{}m", stringify!($type as u8), stringify!($color as u8))
+        };
+    }
+
+
+    pub mod dot_defineds {
+        lazy_static! {
+            // Colors
+            pub static ref BLACK_COLOR  : String = makedot!(DotTypes::Light, DotColors::Black  );
+            pub static ref RED_COLOR    : String = makedot!(DotTypes::Light, DotColors::Red    );
+            pub static ref GREEN_COLOR  : String = makedot!(DotTypes::Light, DotColors::Green  );
+            pub static ref YELLOW_COLOR : String = makedot!(DotTypes::Light, DotColors::Yellow );
+            pub static ref BLUE_COLOR   : String = makedot!(DotTypes::Light, DotColors::Blue   );
+            pub static ref MAGENTA_COLOR: String = makedot!(DotTypes::Light, DotColors::Magenta);
+            pub static ref CYAN_COLOR   : String = makedot!(DotTypes::Light, DotColors::Cyan   );
+            pub static ref WHITE_COLOR  : String = makedot!(DotTypes::Light, DotColors::White  );
+            pub static ref DEFAULT_COLOR: String = makedot!(DotTypes::Light, DotColors::Default);
+
+            // Light colors
+            pub static ref LIGHT_BLACK_COLOR  : String = makedot!(DotTypes::Light, DotColors::LightBlack  );
+            pub static ref LIGHT_RED_COLOR    : String = makedot!(DotTypes::Light, DotColors::LightRed    );
+            pub static ref LIGHT_GREEN_COLOR  : String = makedot!(DotTypes::Light, DotColors::LightGreen  );
+            pub static ref LIGHT_YELLOW_COLOR : String = makedot!(DotTypes::Light, DotColors::LightYellow );
+            pub static ref LIGHT_BLUE_COLOR   : String = makedot!(DotTypes::Light, DotColors::LightBlue   );
+            pub static ref LIGHT_MAGENTA_COLOR: String = makedot!(DotTypes::Light, DotColors::LightMagenta);
+            pub static ref LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Light, DotColors::LightCyan   );
+            pub static ref LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Light, DotColors::LightWhite  );
+            pub static ref LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Light, DotColors::LightDefault);
+
+            // Foreground colors
+            pub static ref FG_BLACK_COLOR     : String = makedot!(DotTypes::Light, DotColors::ForegroundBlack  );
+            pub static ref FG_RED_COLOR       : String = makedot!(DotTypes::Light, DotColors::ForegroundRed    );
+            pub static ref FG_GREEN_COLOR     : String = makedot!(DotTypes::Light, DotColors::ForegroundGreen  );
+            pub static ref FG_YELLOW_COLOR    : String = makedot!(DotTypes::Light, DotColors::ForegroundYellow );
+            pub static ref FG_BLUE_COLOR      : String = makedot!(DotTypes::Light, DotColors::ForegroundBlue   );
+            pub static ref FG_MAGENTA_COLOR   : String = makedot!(DotTypes::Light, DotColors::ForegroundMagenta);
+            pub static ref FG_CYAN_COLOR      : String = makedot!(DotTypes::Light, DotColors::ForegroundCyan   );
+            pub static ref FG_WHITE_COLOR     : String = makedot!(DotTypes::Light, DotColors::ForegroundWhite  );
+            pub static ref FG_DEFAULT_COLOR   : String = makedot!(DotTypes::Light, DotColors::ForegroundDefault);
+
+            // Foreground light colors
+            pub static ref FG_LIGHT_BLACK_COLOR  : String = makedot!(DotTypes::Light, DotColors::ForegroundLightBlack  );
+            pub static ref FG_LIGHT_RED_COLOR    : String = makedot!(DotTypes::Light, DotColors::ForegroundLightRed    );
+            pub static ref FG_LIGHT_GREEN_COLOR  : String = makedot!(DotTypes::Light, DotColors::ForegroundLightGreen  );
+            pub static ref FG_LIGHT_YELLOW_COLOR : String = makedot!(DotTypes::Light, DotColors::ForegroundLightYellow );
+            pub static ref FG_LIGHT_BLUE_COLOR   : String = makedot!(DotTypes::Light, DotColors::ForegroundLightBlue   );
+            pub static ref FG_LIGHT_MAGENTA_COLOR: String = makedot!(DotTypes::Light, DotColors::ForegroundLightMagenta);
+            pub static ref FG_LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Light, DotColors::ForegroundLightCyan   );
+            pub static ref FG_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Light, DotColors::ForegroundLightWhite  );
+            pub static ref FG_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Light, DotColors::ForegroundLightDefault);
+
+            // TODO: Bold
+        }
     }
 
     macro_rules! printdot {
@@ -171,7 +231,10 @@ macro_rules! colodot {
 
 #[cfg(test)]
 mod tests {
-    use crate::dot::*;
+    use crate::dot::{
+        *,
+        dot_defineds
+    };
 
     #[test]
     fn play_with_colors() {
@@ -188,5 +251,10 @@ mod tests {
     fn play_with_types() {
         colodot!(DotTypes::Bold, DotColors::Yellow, "Hello, bold yellow!\n", true);
         colodot!(DotTypes::Blink,DotColors::ForegroundBlue, "Hello, foreground blink blue!\n", true);
+    }
+
+    #[test]
+    fn play_with_lazys() {
+        println!("{}{}", *dot_defineds::FG_BLUE_COLOR, "Hello, world!"); reset();
     }
 }
