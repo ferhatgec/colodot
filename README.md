@@ -1,7 +1,7 @@
 # Colo[dot]rs
 Easy-to-use, powerful Rust implementation of Colorized library.
 
-```rs
+```rust
 colodot!(DotTypes::Bold, DotColors::Red,   "Hello, red!\n",   true);
 colodot!(DotTypes::Light,DotColors::Green, "Hello, green!\n", true);
 colodot!(DotTypes::Blink,DotColors::Blue,  "Hello, blue!\n",  true);
