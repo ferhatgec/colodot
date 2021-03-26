@@ -10,4 +10,10 @@ repository = "https://github.com/ferhatgec/colodot/"
 documentation = "https://docs.rs/colodot"
 license-file = "LICENSE"
 
+include = [
+    ".gitignore",
+    "src/lib.rs",
+    "Cargo.toml",
+]
+
 [dependencies]
