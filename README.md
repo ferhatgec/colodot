@@ -9,7 +9,31 @@ colodot!(DotTypes::Blink,DotColors::Blue,  "Hello, blue!\n",  true);
 red()  ; println!("{}", "Hello, red!"  );
 green(); println!("{}", "Hello, green!");
 blue() ; println!("{}", "Hello, blue!" );
+
+colodot!(colodot::dot::DotTrueColor{r: 255, g: 255, b: 255}, "Hello, world!\n");
 ```
+
+### How to use?
+Add this code-block to your ``Cargo.toml``
+
+```toml
+[dependencies]
+colodot = "0.1.2"
+```
+
+and *Do not forget* to add this to your ``main.rs`` or ``lib.rs``
+
+```rust
+#[macro_use]
+extern crate colodot;
+
+use colodot::dot::*;
+
+fn main() {
+    colodot!(colodot::dot::DotTrueColor{r: 255, g: 255, b: 255}, "Huhuuu ^-^!\n");
+}
+```
+
 
 ### TODO:
   * Formatter  support.
