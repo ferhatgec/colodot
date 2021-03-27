@@ -222,6 +222,7 @@ macro_rules! colodot {
         print!("\x1b[{};{}m{}", $dot_color as u8, $dot_type as u8, data);
     };
 
+    // With reset expression.
     ($dot_type: expr, $dot_color: expr, $args: expr, $reset: expr) => {
         {
             let _force_to_bool: bool = $reset;
@@ -229,7 +230,7 @@ macro_rules! colodot {
             colodot!($dot_type, $dot_color, $args);
 
             if _force_to_bool {
-                print!("{}", "\x1b[0m");
+                crate::dot::reset();
             }
         }
     };
@@ -237,8 +238,21 @@ macro_rules! colodot {
     ($dot_true_color: expr, $args: expr) => {
         let _type = $dot_true_color as DotTrueColor;
 
-        // {} = r, {} = g, {} = b
+        // {} = r, {} = g, {} = b (u32)
         print!("\x1b[38;2;{};{};{}m{}", _type.r, _type.g, _type.b, $args);
+    };
+
+    // With reset expression
+    ($dot_true_color: expr, $args: expr, $reset: expr) => {
+        let _type                = $dot_true_color as DotTrueColor;
+        let _force_to_bool: bool = $reset;
+
+        // {} = r, {} = g, {} = b (u32)
+        print!("\x1b[38;2;{};{};{}m{}", _type.r, _type.g, _type.b, $args);
+
+        if _force_to_bool {
+            crate::dot::reset();
+        }
     };
 }
 
