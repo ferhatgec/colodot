@@ -5,7 +5,7 @@
 //
 // 1: directly make my texts colored:
 //     function definition:
-//        dot::color()
+//          dot::color()
 //
 //    red();
 //    green();
@@ -16,7 +16,7 @@
 //
 // 2: change type (Bold, Dim etc.) and color of my text:
 //     macro definition:
-//        colodot!(DotTypes, DotColors, Expression, Reset)
+//          colodot!(DotTypes, DotColors, Expression, Reset)
 //
 //     colodot!(DotTypes::Bold, DotColors::Red,        "Hello, world!"  , false);
 //     colodot!(DotTypes::Light,DotColors::LightGreen, "Hello, world!\n", false);
@@ -24,7 +24,30 @@
 //     ...
 //
 // 3: change type and color (with TrueColor support) of my text:
-//     work-in-progress!
+//     macro definition:
+//          colodot!(DotTrueColor   , Expression)
+//
+//          colodottc!(DotTrueColor, Expression)
+//          colodottc!(DotTrueColor , Expression, Reset)
+//
+//
+//     function definition:
+//       !* basic_true_color   (DotTrueColor, Argument (&str))
+//       !* basic_bg_true_color(DotTrueColor, Argument (&str))
+//       !* true_color         (r (u32), g (u32), b (u32), Arguments (&[&str]))
+//       !* bg_true_color      (r (u32), g (u32), b (u32), Arguments (&[&str]))
+//
+//     colodot!  (DotTrueColor{r: 31, g: 69, b: 100 }, "Hello, world!\n"    );
+//     colodottc!(DotTrueColor{r: 12, g: 50, b: 40  }, "Hello, world!"      );
+//     colodottc!(DotTrueColor{r: 200, g: 100, b: 12}, "Hello, world!", true);
+//
+//     true_color   (1  , 1,  1 , &["Hello", " , ", "world", "!"]);
+//     bg_true_color(230, 15, 60, &["Hello", " , ", "world", "!"]);
+//
+//     basic_true_color   (DotTrueColor{r: 5  , g: 5 , b: 5 }, "Hello, world!");
+//     basic_bg_true_color(DotTrueColor{r: 235, g: 20, b: 65}, "Hello, world!");
+//
+//     !* = TrueColor functions are calls macros.
 //
 //
 //
@@ -36,10 +59,7 @@
 //
 
 // TODO:
-//
-// Add RGB(u8, u8, u8) for TrueColor support.
-// Add RESET
-// Add tests, examples.
+// Add more tests, examples.
 
 #![recursion_limit="256"]
 

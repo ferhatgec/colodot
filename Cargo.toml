@@ -1,6 +1,6 @@
 [package]
 name = "colodot"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["\"ferhatgec\""]
 edition = "2018"
 description = "Powerful Rust implementation of Colorized library"
