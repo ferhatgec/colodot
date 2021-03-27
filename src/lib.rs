@@ -241,12 +241,15 @@ macro_rules! colodot {
         // {} = r, {} = g, {} = b (u32)
         print!("\x1b[38;2;{};{};{}m{}", _type.r, _type.g, _type.b, $args);
     };
+}
 
-    // With reset expression
+// Extended TrueColor macros
+#[macro_export]
+macro_rules! colodottc {
     ($dot_true_color: expr, $args: expr, $reset: expr) => {
         let _force_to_bool: bool = $reset;
 
-        colodot!($dot_true_color, $args)
+        colodot!($dot_true_color, $args);
 
         if _force_to_bool {
             crate::dot::reset();
@@ -286,5 +289,6 @@ mod tests {
     #[test]
     fn play_with_truecolor() {
         colodot!(DotTrueColor{r: 31, g: 69, b: 100}, "Hello, world!\n");
+        colodottc!(DotTrueColor{r: 200, g: 100, b: 12}, "Hello, world!", true);
     }
 }
