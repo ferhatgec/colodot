@@ -92,6 +92,12 @@ pub mod dot {
         ForegroundLightDefault=109
     }
 
+    pub struct DotTrueColor {
+        pub r: u32,
+        pub g: u32,
+        pub b: u32
+    }
+
     pub enum DotTypes {
         Light     ,
         Bold      ,
@@ -210,13 +216,13 @@ pub mod dot {
 
 #[macro_export]
 macro_rules! colodot {
-    ($dot_type:expr, $dot_color:expr,  $args:expr) => {
+    ($dot_type: expr, $dot_color: expr,  $args: expr) => {
         let data: &str = $args;
 
         print!("\x1b[{};{}m{}", $dot_color as u8, $dot_type as u8, data);
     };
 
-    ($dot_type:expr, $dot_color:expr, $args:expr, $reset:expr) => {
+    ($dot_type: expr, $dot_color: expr, $args: expr, $reset: expr) => {
         {
             let _force_to_bool: bool = $reset;
 
@@ -226,6 +232,13 @@ macro_rules! colodot {
                 print!("{}", "\x1b[0m");
             }
         }
+    };
+
+    ($dot_true_color: expr, $args: expr) => {
+        let _type = $dot_true_color as DotTrueColor;
+
+        // {} = r, {} = g, {} = b
+        print!("\x1b[38;2;{};{};{}m{}", _type.r, _type.g, _type.b, $args);
     };
 }
 
@@ -256,5 +269,10 @@ mod tests {
     #[test]
     fn play_with_lazys() {
         println!("{}{}", *dot_defineds::FG_BLUE_COLOR, "Hello, world!"); reset();
+    }
+
+    #[test]
+    fn play_with_truecolor() {
+        colodot!(DotTrueColor{r: 31, g: 69, b: 100}, "Hello, world!\n");
     }
 }
