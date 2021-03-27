@@ -10,7 +10,16 @@ red()  ; println!("{}", "Hello, red!"  );
 green(); println!("{}", "Hello, green!");
 blue() ; println!("{}", "Hello, blue!" );
 
-colodot!(colodot::dot::DotTrueColor{r: 255, g: 255, b: 255}, "Hello, world!\n");
+colodot!  (colodot::dot::DotTrueColor{r: 255, g: 255, b: 255}, "Hello, world!\n");
+colodottc!(colodot::dot::DotTrueColor{r: 12 , g: 50, b: 40  }, "Hello, world!"  );
+
+colodottc!(colodot::dot::DotTrueColor{r: 200, g: 100, b: 12 }, "Hello, world!", true);
+        
+true_color   (1  , 1 , 1 , &["Hello", " , ", "world", "!"]);
+bg_true_color(230, 15, 60, &["Hello", " , ", "world", "!"]);
+
+basic_true_color   (colodot::dot::DotTrueColor{r: 5  , g: 5 , b: 5 }, "Hello, world!");
+basic_bg_true_color(colodot::dot::DotTrueColor{r: 235, g: 20, b: 65}, "Hello, world!");
 ```
 
 ### How to use?
@@ -38,7 +47,6 @@ fn main() {
 ### TODO:
   * Formatter  support.
   * PowerShell support. (Windows)
-  * TrueColor  support.
   * More tests.
 
 ### Colo[dot]rs licensed under the terms of MIT License.
