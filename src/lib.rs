@@ -71,27 +71,27 @@ pub mod dot {
         LightWhite                , // 97
         LightDefault         = 99 ,
 
-        // Foreground colors
-        ForegroundBlack      = 40 ,
-        ForegroundRed             ,
-        ForegroundGreen           ,
-        ForegroundYellow          ,
-        ForegroundBlue            ,
-        ForegroundMagenta         ,
-        ForegroundCyan            ,
-        ForegroundWhite           , // 47
-        ForegroundDefault    = 49 ,
+        // Background colors
+        BackgroundBlack      = 40 ,
+        BackgroundRed             ,
+        BackgroundGreen           ,
+        BackgroundYellow          ,
+        BackgroundBlue            ,
+        BackgroundMagenta         ,
+        BackgroundCyan            ,
+        BackgroundWhite           , // 47
+        BackgroundDefault    = 49 ,
 
-        // Foreground light colors
-        ForegroundLightBlack = 100,
-        ForegroundLightRed        ,
-        ForegroundLightGreen      ,
-        ForegroundLightYellow     ,
-        ForegroundLightBlue       ,
-        ForegroundLightMagenta    ,
-        ForegroundLightCyan       ,
-        ForegroundLightWhite      , // 107
-        ForegroundLightDefault=109
+        // Background light colors
+        BackgroundLightBlack = 100,
+        BackgroundLightRed        ,
+        BackgroundLightGreen      ,
+        BackgroundLightYellow     ,
+        BackgroundLightBlue       ,
+        BackgroundLightMagenta    ,
+        BackgroundLightCyan       ,
+        BackgroundLightWhite      , // 107
+        BackgroundLightDefault=109
     }
 
     pub struct DotTrueColor {
@@ -104,10 +104,12 @@ pub mod dot {
         Light     ,
         Bold      ,
         Dim       ,
+        Italic    ,
         Underlined,
         Blink     ,
+        RapidBlink,
         Reverse   ,
-        Hidden
+        Hidden     // 8
     }
 
     macro_rules! makedot {
@@ -141,27 +143,27 @@ pub mod dot {
             pub static ref LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Light, DotColors::LightWhite  );
             pub static ref LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Light, DotColors::LightDefault);
 
-            // Foreground colors
-            pub static ref FG_BLACK_COLOR     : String = makedot!(DotTypes::Light, DotColors::ForegroundBlack  );
-            pub static ref FG_RED_COLOR       : String = makedot!(DotTypes::Light, DotColors::ForegroundRed    );
-            pub static ref FG_GREEN_COLOR     : String = makedot!(DotTypes::Light, DotColors::ForegroundGreen  );
-            pub static ref FG_YELLOW_COLOR    : String = makedot!(DotTypes::Light, DotColors::ForegroundYellow );
-            pub static ref FG_BLUE_COLOR      : String = makedot!(DotTypes::Light, DotColors::ForegroundBlue   );
-            pub static ref FG_MAGENTA_COLOR   : String = makedot!(DotTypes::Light, DotColors::ForegroundMagenta);
-            pub static ref FG_CYAN_COLOR      : String = makedot!(DotTypes::Light, DotColors::ForegroundCyan   );
-            pub static ref FG_WHITE_COLOR     : String = makedot!(DotTypes::Light, DotColors::ForegroundWhite  );
-            pub static ref FG_DEFAULT_COLOR   : String = makedot!(DotTypes::Light, DotColors::ForegroundDefault);
+            // Background colors
+            pub static ref BG_BLACK_COLOR     : String = makedot!(DotTypes::Light, DotColors::BackgroundBlack  );
+            pub static ref BG_RED_COLOR       : String = makedot!(DotTypes::Light, DotColors::BackgroundRed    );
+            pub static ref BG_GREEN_COLOR     : String = makedot!(DotTypes::Light, DotColors::BackgroundGreen  );
+            pub static ref BG_YELLOW_COLOR    : String = makedot!(DotTypes::Light, DotColors::BackgroundYellow );
+            pub static ref BG_BLUE_COLOR      : String = makedot!(DotTypes::Light, DotColors::BackgroundBlue   );
+            pub static ref BG_MAGENTA_COLOR   : String = makedot!(DotTypes::Light, DotColors::BackgroundMagenta);
+            pub static ref BG_CYAN_COLOR      : String = makedot!(DotTypes::Light, DotColors::BackgroundCyan   );
+            pub static ref BG_WHITE_COLOR     : String = makedot!(DotTypes::Light, DotColors::BackgroundWhite  );
+            pub static ref BG_DEFAULT_COLOR   : String = makedot!(DotTypes::Light, DotColors::BackgroundDefault);
 
-            // Foreground light colors
-            pub static ref FG_LIGHT_BLACK_COLOR  : String = makedot!(DotTypes::Light, DotColors::ForegroundLightBlack  );
-            pub static ref FG_LIGHT_RED_COLOR    : String = makedot!(DotTypes::Light, DotColors::ForegroundLightRed    );
-            pub static ref FG_LIGHT_GREEN_COLOR  : String = makedot!(DotTypes::Light, DotColors::ForegroundLightGreen  );
-            pub static ref FG_LIGHT_YELLOW_COLOR : String = makedot!(DotTypes::Light, DotColors::ForegroundLightYellow );
-            pub static ref FG_LIGHT_BLUE_COLOR   : String = makedot!(DotTypes::Light, DotColors::ForegroundLightBlue   );
-            pub static ref FG_LIGHT_MAGENTA_COLOR: String = makedot!(DotTypes::Light, DotColors::ForegroundLightMagenta);
-            pub static ref FG_LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Light, DotColors::ForegroundLightCyan   );
-            pub static ref FG_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Light, DotColors::ForegroundLightWhite  );
-            pub static ref FG_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Light, DotColors::ForegroundLightDefault);
+            // Background light colors
+            pub static ref BG_LIGHT_BLACK_COLOR  : String = makedot!(DotTypes::Light, DotColors::BackgroundLightBlack  );
+            pub static ref BG_LIGHT_RED_COLOR    : String = makedot!(DotTypes::Light, DotColors::BackgroundLightRed    );
+            pub static ref BG_LIGHT_GREEN_COLOR  : String = makedot!(DotTypes::Light, DotColors::BackgroundLightGreen  );
+            pub static ref BG_LIGHT_YELLOW_COLOR : String = makedot!(DotTypes::Light, DotColors::BackgroundLightYellow );
+            pub static ref BG_LIGHT_BLUE_COLOR   : String = makedot!(DotTypes::Light, DotColors::BackgroundLightBlue   );
+            pub static ref BG_LIGHT_MAGENTA_COLOR: String = makedot!(DotTypes::Light, DotColors::BackgroundLightMagenta);
+            pub static ref BG_LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Light, DotColors::BackgroundLightCyan   );
+            pub static ref BG_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Light, DotColors::BackgroundLightWhite  );
+            pub static ref BG_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Light, DotColors::BackgroundLightDefault);
 
             // Bold Colors
             pub static ref BOLD_BLACK_COLOR  : String = makedot!(DotTypes::Bold, DotColors::Black  );
@@ -185,28 +187,28 @@ pub mod dot {
             pub static ref BOLD_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Bold, DotColors::LightWhite  );
             pub static ref BOLD_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Bold, DotColors::LightDefault);
 
-            // Bold foreground colors
-            pub static ref BOLD_FG_BLACK_COLOR     : String = makedot!(DotTypes::Bold, DotColors::ForegroundBlack  );
-            pub static ref BOLD_FG_RED_COLOR       : String = makedot!(DotTypes::Bold, DotColors::ForegroundRed    );
-            pub static ref BOLD_FG_GREEN_COLOR     : String = makedot!(DotTypes::Bold, DotColors::ForegroundGreen  );
-            pub static ref BOLD_FG_YELLOW_COLOR    : String = makedot!(DotTypes::Bold, DotColors::ForegroundYellow );
-            pub static ref BOLD_FG_BLUE_COLOR      : String = makedot!(DotTypes::Bold, DotColors::ForegroundBlue   );
-            pub static ref BOLD_FG_MAGENTA_COLOR   : String = makedot!(DotTypes::Bold, DotColors::ForegroundMagenta);
-            pub static ref BOLD_FG_CYAN_COLOR      : String = makedot!(DotTypes::Bold, DotColors::ForegroundCyan   );
+            // Bold Background colors
+            pub static ref BOLD_BG_BLACK_COLOR     : String = makedot!(DotTypes::Bold, DotColors::BackgroundBlack  );
+            pub static ref BOLD_BG_RED_COLOR       : String = makedot!(DotTypes::Bold, DotColors::BackgroundRed    );
+            pub static ref BOLD_BG_GREEN_COLOR     : String = makedot!(DotTypes::Bold, DotColors::BackgroundGreen  );
+            pub static ref BOLD_BG_YELLOW_COLOR    : String = makedot!(DotTypes::Bold, DotColors::BackgroundYellow );
+            pub static ref BOLD_BG_BLUE_COLOR      : String = makedot!(DotTypes::Bold, DotColors::BackgroundBlue   );
+            pub static ref BOLD_BG_MAGENTA_COLOR   : String = makedot!(DotTypes::Bold, DotColors::BackgroundMagenta);
+            pub static ref BOLD_BG_CYAN_COLOR      : String = makedot!(DotTypes::Bold, DotColors::BackgroundCyan   );
 
-            pub static ref BOLD_FG_WHITE_COLOR     : String = makedot!(DotTypes::Bold, DotColors::ForegroundWhite  );
-            pub static ref BOLD_FG_DEFAULT_COLOR   : String = makedot!(DotTypes::Bold, DotColors::ForegroundDefault);
+            pub static ref BOLD_BG_WHITE_COLOR     : String = makedot!(DotTypes::Bold, DotColors::BackgroundWhite  );
+            pub static ref BOLD_BG_DEFAULT_COLOR   : String = makedot!(DotTypes::Bold, DotColors::BackgroundDefault);
 
-            // Foreground light colors
-            pub static ref BOLD_FG_LIGHT_BLACK_COLOR  : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightBlack  );
-            pub static ref BOLD_FG_LIGHT_RED_COLOR    : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightRed    );
-            pub static ref BOLD_FG_LIGHT_GREEN_COLOR  : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightGreen  );
-            pub static ref BOLD_FG_LIGHT_YELLOW_COLOR : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightYellow );
-            pub static ref BOLD_FG_LIGHT_BLUE_COLOR   : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightBlue   );
-            pub static ref BOLD_FG_LIGHT_MAGENTA_COLOR: String = makedot!(DotTypes::Bold, DotColors::ForegroundLightMagenta);
-            pub static ref BOLD_FG_LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightCyan   );
-            pub static ref BOLD_FG_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightWhite  );
-            pub static ref BOLD_FG_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Bold, DotColors::ForegroundLightDefault);
+            // Background light colors
+            pub static ref BOLD_BG_LIGHT_BLACK_COLOR  : String = makedot!(DotTypes::Bold, DotColors::BackgroundLightBlack  );
+            pub static ref BOLD_BG_LIGHT_RED_COLOR    : String = makedot!(DotTypes::Bold, DotColors::BackgroundLightRed    );
+            pub static ref BOLD_BG_LIGHT_GREEN_COLOR  : String = makedot!(DotTypes::Bold, DotColors::BackgroundLightGreen  );
+            pub static ref BOLD_BG_LIGHT_YELLOW_COLOR : String = makedot!(DotTypes::Bold, DotColors::BackgroundLightYellow );
+            pub static ref BOLD_BG_LIGHT_BLUE_COLOR   : String = makedot!(DotTypes::Bold, DotColors::BackgroundLightBlue   );
+            pub static ref BOLD_BG_LIGHT_MAGENTA_COLOR: String = makedot!(DotTypes::Bold, DotColors::BackgroundLightMagenta);
+            pub static ref BOLD_BG_LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Bold, DotColors::BackgroundLightCyan   );
+            pub static ref BOLD_BG_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Bold, DotColors::BackgroundLightWhite  );
+            pub static ref BOLD_BG_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Bold, DotColors::BackgroundLightDefault);
         }
     }
 
@@ -236,25 +238,45 @@ pub mod dot {
     pub fn light_white  () { printdot!(DotTypes::Light, DotColors::LightWhite  ); }
     pub fn light_default() { printdot!(DotTypes::Light, DotColors::LightDefault); }
 
-    pub fn fg_black        () { printdot!(DotTypes::Light, DotColors::ForegroundBlack       ); }
-    pub fn fg_red          () { printdot!(DotTypes::Light, DotColors::ForegroundRed         ); }
-    pub fn fg_green        () { printdot!(DotTypes::Light, DotColors::ForegroundGreen       ); }
-    pub fn fg_yellow       () { printdot!(DotTypes::Light, DotColors::ForegroundYellow      ); }
-    pub fn fg_blue         () { printdot!(DotTypes::Light, DotColors::ForegroundBlue        ); }
-    pub fn fg_magenta      () { printdot!(DotTypes::Light, DotColors::ForegroundMagenta     ); }
-    pub fn fg_cyan         () { printdot!(DotTypes::Light, DotColors::ForegroundCyan        ); }
-    pub fn fg_white        () { printdot!(DotTypes::Light, DotColors::ForegroundWhite       ); }
-    pub fn fg_default      () { printdot!(DotTypes::Light, DotColors::ForegroundDefault     ); }
+    pub fn bg_black        () { printdot!(DotTypes::Light, DotColors::BackgroundBlack       ); }
+    pub fn bg_red          () { printdot!(DotTypes::Light, DotColors::BackgroundRed         ); }
+    pub fn bg_green        () { printdot!(DotTypes::Light, DotColors::BackgroundGreen       ); }
+    pub fn bg_yellow       () { printdot!(DotTypes::Light, DotColors::BackgroundYellow      ); }
+    pub fn bg_blue         () { printdot!(DotTypes::Light, DotColors::BackgroundBlue        ); }
+    pub fn bg_magenta      () { printdot!(DotTypes::Light, DotColors::BackgroundMagenta     ); }
+    pub fn bg_cyan         () { printdot!(DotTypes::Light, DotColors::BackgroundCyan        ); }
+    pub fn bg_white        () { printdot!(DotTypes::Light, DotColors::BackgroundWhite       ); }
+    pub fn bg_default      () { printdot!(DotTypes::Light, DotColors::BackgroundDefault     ); }
 
-    pub fn fg_light_black  () { printdot!(DotTypes::Light, DotColors::ForegroundLightBlack  ); }
-    pub fn fg_light_red    () { printdot!(DotTypes::Light, DotColors::ForegroundLightRed    ); }
-    pub fn fg_light_green  () { printdot!(DotTypes::Light, DotColors::ForegroundLightGreen  ); }
-    pub fn fg_light_yellow () { printdot!(DotTypes::Light, DotColors::ForegroundLightYellow ); }
-    pub fn fg_light_blue   () { printdot!(DotTypes::Light, DotColors::ForegroundLightBlue   ); }
-    pub fn fg_light_magenta() { printdot!(DotTypes::Light, DotColors::ForegroundLightMagenta); }
-    pub fn fg_light_cyan   () { printdot!(DotTypes::Light, DotColors::ForegroundLightCyan   ); }
-    pub fn fg_light_white  () { printdot!(DotTypes::Light, DotColors::ForegroundLightWhite  ); }
-    pub fn fg_light_default() { printdot!(DotTypes::Light, DotColors::ForegroundLightDefault); }
+    pub fn bg_light_black  () { printdot!(DotTypes::Light, DotColors::BackgroundLightBlack  ); }
+    pub fn bg_light_red    () { printdot!(DotTypes::Light, DotColors::BackgroundLightRed    ); }
+    pub fn bg_light_green  () { printdot!(DotTypes::Light, DotColors::BackgroundLightGreen  ); }
+    pub fn bg_light_yellow () { printdot!(DotTypes::Light, DotColors::BackgroundLightYellow ); }
+    pub fn bg_light_blue   () { printdot!(DotTypes::Light, DotColors::BackgroundLightBlue   ); }
+    pub fn bg_light_magenta() { printdot!(DotTypes::Light, DotColors::BackgroundLightMagenta); }
+    pub fn bg_light_cyan   () { printdot!(DotTypes::Light, DotColors::BackgroundLightCyan   ); }
+    pub fn bg_light_white  () { printdot!(DotTypes::Light, DotColors::BackgroundLightWhite  ); }
+    pub fn bg_light_default() { printdot!(DotTypes::Light, DotColors::BackgroundLightDefault); }
+
+    pub fn basic_true_color(dot_true_color   : DotTrueColor, arg: &str) {
+        crate::colodot!(dot_true_color, arg);
+    }
+
+    pub fn basic_bg_true_color(dot_true_color: DotTrueColor, arg: &str) {
+        crate::colodottc!(dot_true_color, arg);
+    }
+
+    pub fn true_color   (r: u32, g: u32, b: u32, args: &[&str]) {
+        for arg in args {
+            crate::colodot!(DotTrueColor{r: r, g: g, b: b}, arg);
+        }
+    }
+
+    pub fn bg_true_color(r: u32, g: u32, b: u32, args: &[&str]) {
+        for arg in args {
+            crate::colodottc!(DotTrueColor{r: r, g: g, b: b}, arg);
+        }
+    }
 
     pub fn reset           () { printdot!(DotTypes::Light, DotColors::Reset                 ); }
 }
@@ -291,6 +313,14 @@ macro_rules! colodot {
 // Extended TrueColor macros
 #[macro_export]
 macro_rules! colodottc {
+    // Background support
+    ($dot_true_color: expr, $args: expr) => {
+        let _type = $dot_true_color as DotTrueColor;
+
+        // {} = r, {} = g, {} = b (u32)
+        print!("\x1b[48;2;{};{};{}m{}", _type.r, _type.g, _type.b, $args);
+    };
+
     ($dot_true_color: expr, $args: expr, $reset: expr) => {
         let _force_to_bool: bool = $reset;
 
@@ -323,20 +353,32 @@ mod tests {
     #[test]
     fn play_with_types() {
         colodot!(DotTypes::Bold, DotColors::Yellow, "Hello, bold yellow!\n", true);
-        colodot!(DotTypes::Blink,DotColors::ForegroundBlue, "Hello, foreground blink blue!\n", true);
+        colodot!(DotTypes::Blink,DotColors::BackgroundBlue, "Hello, background blink blue!\n", true);
     }
 
     #[test]
     fn play_with_lazys() {
-        println!("{}{}\n", *dot_defineds::FG_BLUE_COLOR, "Hello, world!"    );
+        println!("{}{}\n", *dot_defineds::BG_BLUE_COLOR, "Hello, world!"    );
         println!("{}{}\n", *dot_defineds::BOLD_RED_COLOR, "Hello, bold red!");
-        println!("{}{}\n", *dot_defineds::BOLD_FG_BLUE_COLOR, "Hello, bold foreground blue!");
+        println!("{}{}\n", *dot_defineds::BOLD_BG_BLUE_COLOR, "Hello, bold background blue!");
         reset();
     }
 
     #[test]
     fn play_with_truecolor() {
-        colodot!(DotTrueColor{r: 31, g: 69, b: 100}, "Hello, world!\n");
+        colodot!  (DotTrueColor{r: 31, g: 69, b: 100   }, "Hello, world!\n");
         colodottc!(DotTrueColor{r: 200, g: 100, b: 12}, "Hello, world!", true);
+        colodottc!(DotTrueColor{r: 12, g: 50, b: 40  }, "Hello, world!");
+    }
+
+    #[test]
+    fn play_with_truecolor_functions() {
+        true_color(1, 1, 1, &["Hello", " , ", "world", "!"]);
+        bg_true_color(230, 15, 60, &["Hello", " , ", "world", "!"]);
+
+        basic_true_color(DotTrueColor{r: 5, g: 5, b: 5}, "Hello, world!");
+        basic_bg_true_color(DotTrueColor{r: 235, g: 20, b: 65}, "Hello, world!");
+
+        reset();
     }
 }
