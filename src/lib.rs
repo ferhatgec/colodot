@@ -161,7 +161,27 @@ pub mod dot {
             pub static ref FG_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Light, DotColors::ForegroundLightWhite  );
             pub static ref FG_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Light, DotColors::ForegroundLightDefault);
 
-            // TODO: Bold
+            // Bold Colors
+            pub static ref BOLD_BLACK_COLOR  : String = makedot!(DotTypes::Bold, DotColors::Black  );
+            pub static ref BOLD_RED_COLOR    : String = makedot!(DotTypes::Bold, DotColors::Red    );
+            pub static ref BOLD_GREEN_COLOR  : String = makedot!(DotTypes::Bold, DotColors::Green  );
+            pub static ref BOLD_YELLOW_COLOR : String = makedot!(DotTypes::Bold, DotColors::Yellow );
+            pub static ref BOLD_BLUE_COLOR   : String = makedot!(DotTypes::Bold, DotColors::Blue   );
+            pub static ref BOLD_MAGENTA_COLOR: String = makedot!(DotTypes::Bold, DotColors::Magenta);
+            pub static ref BOLD_CYAN_COLOR   : String = makedot!(DotTypes::Bold, DotColors::Cyan   );
+            pub static ref BOLD_WHITE_COLOR  : String = makedot!(DotTypes::Bold, DotColors::White  );
+            pub static ref BOLD_DEFAULT_COLOR: String = makedot!(DotTypes::Bold, DotColors::Default);
+
+            // Light colors
+            pub static ref BOLD_LIGHT_BLACK_COLOR  : String = makedot!(DotTypes::Bold, DotColors::LightBlack  );
+            pub static ref BOLD_LIGHT_RED_COLOR    : String = makedot!(DotTypes::Bold, DotColors::LightRed    );
+            pub static ref BOLD_LIGHT_GREEN_COLOR  : String = makedot!(DotTypes::Bold, DotColors::LightGreen  );
+            pub static ref BOLD_LIGHT_YELLOW_COLOR : String = makedot!(DotTypes::Bold, DotColors::LightYellow );
+            pub static ref BOLD_LIGHT_BLUE_COLOR   : String = makedot!(DotTypes::Bold, DotColors::LightBlue   );
+            pub static ref BOLD_LIGHT_MAGENTA_COLOR: String = makedot!(DotTypes::Bold, DotColors::LightMagenta);
+            pub static ref BOLD_LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Bold, DotColors::LightCyan   );
+            pub static ref BOLD_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Bold, DotColors::LightWhite  );
+            pub static ref BOLD_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Bold, DotColors::LightDefault);
         }
     }
 
@@ -283,7 +303,8 @@ mod tests {
 
     #[test]
     fn play_with_lazys() {
-        println!("{}{}", *dot_defineds::FG_BLUE_COLOR, "Hello, world!"); reset();
+        println!("{}{}\n", *dot_defineds::FG_BLUE_COLOR, "Hello, world!");     reset();
+        println!("{}{}\n", *dot_defineds::BOLD_RED_COLOR, "Hello, bold red!"); reset();
     }
 
     #[test]
