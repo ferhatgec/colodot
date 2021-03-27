@@ -8,7 +8,8 @@ keywords = ["term", "text", "color", "bindings", "rust"]
 readme = "README.md"
 repository = "https://github.com/ferhatgec/colodot/"
 documentation = "https://docs.rs/colodot"
-license-file = "LICENSE"
+license = "MIT"
+# license-file = "LICENSE"
 
 include = [
     ".gitignore",

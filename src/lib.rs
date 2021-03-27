@@ -41,6 +41,8 @@
 // Add RESET
 // Add tests, examples.
 
+#![recursion_limit="256"]
+
 #[macro_use]
 extern crate lazy_static;
 
@@ -182,6 +184,29 @@ pub mod dot {
             pub static ref BOLD_LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Bold, DotColors::LightCyan   );
             pub static ref BOLD_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Bold, DotColors::LightWhite  );
             pub static ref BOLD_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Bold, DotColors::LightDefault);
+
+            // Bold foreground colors
+            pub static ref BOLD_FG_BLACK_COLOR     : String = makedot!(DotTypes::Bold, DotColors::ForegroundBlack  );
+            pub static ref BOLD_FG_RED_COLOR       : String = makedot!(DotTypes::Bold, DotColors::ForegroundRed    );
+            pub static ref BOLD_FG_GREEN_COLOR     : String = makedot!(DotTypes::Bold, DotColors::ForegroundGreen  );
+            pub static ref BOLD_FG_YELLOW_COLOR    : String = makedot!(DotTypes::Bold, DotColors::ForegroundYellow );
+            pub static ref BOLD_FG_BLUE_COLOR      : String = makedot!(DotTypes::Bold, DotColors::ForegroundBlue   );
+            pub static ref BOLD_FG_MAGENTA_COLOR   : String = makedot!(DotTypes::Bold, DotColors::ForegroundMagenta);
+            pub static ref BOLD_FG_CYAN_COLOR      : String = makedot!(DotTypes::Bold, DotColors::ForegroundCyan   );
+
+            pub static ref BOLD_FG_WHITE_COLOR     : String = makedot!(DotTypes::Bold, DotColors::ForegroundWhite  );
+            pub static ref BOLD_FG_DEFAULT_COLOR   : String = makedot!(DotTypes::Bold, DotColors::ForegroundDefault);
+
+            // Foreground light colors
+            pub static ref BOLD_FG_LIGHT_BLACK_COLOR  : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightBlack  );
+            pub static ref BOLD_FG_LIGHT_RED_COLOR    : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightRed    );
+            pub static ref BOLD_FG_LIGHT_GREEN_COLOR  : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightGreen  );
+            pub static ref BOLD_FG_LIGHT_YELLOW_COLOR : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightYellow );
+            pub static ref BOLD_FG_LIGHT_BLUE_COLOR   : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightBlue   );
+            pub static ref BOLD_FG_LIGHT_MAGENTA_COLOR: String = makedot!(DotTypes::Bold, DotColors::ForegroundLightMagenta);
+            pub static ref BOLD_FG_LIGHT_CYAN_COLOR   : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightCyan   );
+            pub static ref BOLD_FG_LIGHT_WHITE_COLOR  : String = makedot!(DotTypes::Bold, DotColors::ForegroundLightWhite  );
+            pub static ref BOLD_FG_LIGHT_DEFAULT_COLOR: String = makedot!(DotTypes::Bold, DotColors::ForegroundLightDefault);
         }
     }
 
@@ -303,8 +328,10 @@ mod tests {
 
     #[test]
     fn play_with_lazys() {
-        println!("{}{}\n", *dot_defineds::FG_BLUE_COLOR, "Hello, world!");     reset();
-        println!("{}{}\n", *dot_defineds::BOLD_RED_COLOR, "Hello, bold red!"); reset();
+        println!("{}{}\n", *dot_defineds::FG_BLUE_COLOR, "Hello, world!"    );
+        println!("{}{}\n", *dot_defineds::BOLD_RED_COLOR, "Hello, bold red!");
+        println!("{}{}\n", *dot_defineds::BOLD_FG_BLUE_COLOR, "Hello, bold foreground blue!");
+        reset();
     }
 
     #[test]
