@@ -278,6 +278,14 @@ pub mod dot {
     pub fn bg_light_white  () { printdot!(DotTypes::Light, DotColors::BackgroundLightWhite  ); }
     pub fn bg_light_default() { printdot!(DotTypes::Light, DotColors::BackgroundLightDefault); }
 
+    pub fn from_hex        (hex: u32) -> DotTrueColor {
+        DotTrueColor {
+            r: ((hex >> 16) & 0xff),
+            g: ((hex >> 8)  & 0xff),
+            b: ((hex)       & 0xff)
+        }
+    }
+
     pub fn basic_true_color(dot_true_color   : DotTrueColor, arg: &str) {
         crate::colodot!(dot_true_color, arg);
     }
@@ -400,5 +408,11 @@ mod tests {
         basic_bg_true_color(DotTrueColor{r: 235, g: 20, b: 65}, "Hello, world!");
 
         reset();
+    }
+
+    #[test]
+    fn play_with_truecolor_hex() {
+        colodot!(from_hex(0xffffff), "Hello, world!\n");
+        colodottc!(from_hex(0xd2de01), "Hello, world!", true);
     }
 }

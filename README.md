@@ -13,6 +13,8 @@ blue() ; println!("{}", "Hello, blue!" );
 colodot!  (colodot::dot::DotTrueColor{r: 255, g: 255, b: 255}, "Hello, world!\n");
 colodottc!(colodot::dot::DotTrueColor{r: 12 , g: 50, b: 40  }, "Hello, world!"  );
 
+colodot!  (from_hex(0xffffff), "Hello, world!\n");
+
 colodottc!(colodot::dot::DotTrueColor{r: 200, g: 100, b: 12 }, "Hello, world!", true);
         
 true_color   (1  , 1 , 1 , &["Hello", " , ", "world", "!"]);
@@ -27,7 +29,7 @@ Add this code-block to your ``Cargo.toml``
 
 ```toml
 [dependencies]
-colodot = "0.1.2"
+colodot = "0.1.5"
 ```
 
 and *Do not forget* to add this to your ``main.rs`` or ``lib.rs``
